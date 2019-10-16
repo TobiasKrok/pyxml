@@ -1,9 +1,7 @@
 from xml.dom import minidom
 
 xml_file = minidom.parse("ViewActions.xml")
-
 nodes = ("textInput", "textInputService", "values", "domainObjectList", "selectService", "type")
-xml_file.getElementsByTagName("textInput")
 found_keys = []
 missing_keys = []
 
@@ -16,7 +14,7 @@ def get_node_keys(node_list):
                 if not (element.getAttribute(atr + "Key")).__eq__(""):
                     found_keys.append(str(element.getAttribute(atr + "Key") + "=" + (element.getAttribute(atr))))
                 else:
-                    missing_keys.append(str(element.nodeValue))
+                    missing_keys.append(element)
 
 
 for node in nodes:
